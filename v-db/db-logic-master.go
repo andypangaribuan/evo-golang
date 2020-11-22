@@ -1,9 +1,9 @@
 package v_db
 
 import (
-	"evo-lib/v-ext"
-	"evo-lib/vi"
 	"fmt"
+	"github.com/andypangaribuan/evo-golang/v-ext"
+	"github.com/andypangaribuan/evo-golang/vi"
 	"github.com/jmoiron/sqlx"
 	"github.com/pkg/errors"
 )

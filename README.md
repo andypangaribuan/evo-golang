@@ -1,2 +1,2 @@
-# **`evo-lib`**
-golang library
+# **`evo-golang`**
+evo library

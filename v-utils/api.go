@@ -2,8 +2,8 @@ package v_utils
 
 import (
 	"bytes"
-	"evo-lib/v-ext"
-	"evo-lib/vi"
+	"github.com/andypangaribuan/evo-golang/v-ext"
+	"github.com/andypangaribuan/evo-golang/vi"
 	"github.com/labstack/echo/v4"
 	"github.com/pkg/errors"
 	"io/ioutil"

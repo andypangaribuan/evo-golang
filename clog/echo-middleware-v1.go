@@ -2,9 +2,9 @@ package clog
 
 import (
 	"encoding/base64"
-	"evo-lib/v-ext"
-	"evo-lib/vi"
 	"fmt"
+	"github.com/andypangaribuan/evo-golang/v-ext"
+	"github.com/andypangaribuan/evo-golang/vi"
 	"github.com/labstack/echo/v4"
 	"github.com/pkg/errors"
 	"strconv"

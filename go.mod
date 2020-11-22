@@ -1,4 +1,4 @@
-module evo-lib
+module github.com/andypangaribuan/evo-golang
 
 go 1.14
 

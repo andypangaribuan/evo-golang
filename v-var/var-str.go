@@ -1,7 +1,7 @@
 package v_var
 
 import (
-	"evo-lib/v-ext"
+	"github.com/andypangaribuan/evo-golang/v-ext"
 	"strings"
 )
 

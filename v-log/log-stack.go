@@ -2,9 +2,9 @@ package v_log
 
 import (
 	"bytes"
-	"evo-lib/v-ext"
-	"evo-lib/vi"
 	"fmt"
+	"github.com/andypangaribuan/evo-golang/v-ext"
+	"github.com/andypangaribuan/evo-golang/vi"
 	"os"
 	"reflect"
 	"runtime"

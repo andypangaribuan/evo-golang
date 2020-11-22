@@ -1,8 +1,8 @@
 package v_api
 
 import (
-	"evo-lib/v-ext"
-	"evo-lib/vi"
+	"github.com/andypangaribuan/evo-golang/v-ext"
+	"github.com/andypangaribuan/evo-golang/vi"
 	"github.com/pkg/errors"
 	"reflect"
 )

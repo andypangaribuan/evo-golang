@@ -1,13 +1,13 @@
 package ev
 
 import (
-	"evo-lib/v-db"
-	"evo-lib/v-ext"
-	"evo-lib/v-json"
-	"evo-lib/v-log"
-	"evo-lib/v-utils"
-	"evo-lib/v-var"
-	"evo-lib/vi"
+	"github.com/andypangaribuan/evo-golang/v-db"
+	"github.com/andypangaribuan/evo-golang/v-ext"
+	"github.com/andypangaribuan/evo-golang/v-json"
+	"github.com/andypangaribuan/evo-golang/v-log"
+	"github.com/andypangaribuan/evo-golang/v-utils"
+	"github.com/andypangaribuan/evo-golang/v-var"
+	"github.com/andypangaribuan/evo-golang/vi"
 )
 
 
@@ -40,6 +40,7 @@ func init() {
 	Utils = v_utils.Utils
 	Var = v_var.Var
 
+	//comment
 	vi.Json = Json
 	vi.Log = Log
 	vi.Utils = Utils

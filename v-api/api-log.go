@@ -1,10 +1,10 @@
 package v_api
 
 import (
-	"evo-lib/clog"
-	"evo-lib/v-ext"
-	"evo-lib/v-gr"
-	"evo-lib/vi"
+	"github.com/andypangaribuan/evo-golang/clog"
+	"github.com/andypangaribuan/evo-golang/v-ext"
+	"github.com/andypangaribuan/evo-golang/v-gr"
+	"github.com/andypangaribuan/evo-golang/vi"
 	"time"
 )
 
@@ -18,7 +18,7 @@ func (slf *smLog) TraceV1(logType string, message string, trace *string) {
 	var reqFromServiceVersion *string
 	var reqUid *string
 
-
+	
 	req := slf.context.echo.c.Request()
 
 	if v := req.Header.Get(v_ext.Conf.RequestFromServiceName()); v != "" {

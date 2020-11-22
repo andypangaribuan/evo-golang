@@ -2,8 +2,8 @@ package clog
 
 import (
 	"bytes"
-	"evo-lib/v-ext"
-	"evo-lib/vi"
+	"github.com/andypangaribuan/evo-golang/v-ext"
+	"github.com/andypangaribuan/evo-golang/vi"
 	"log"
 )
 

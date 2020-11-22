@@ -1,7 +1,7 @@
 package v_api
 
 import (
-	"evo-lib/clog"
+	"github.com/andypangaribuan/evo-golang/clog"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
 	"net/http"
