@@ -11,6 +11,7 @@ import (
 	"reflect"
 	"regexp"
 	"strings"
+	"sync"
 	"time"
 )
 
@@ -24,7 +25,14 @@ const charsetUpperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 const charsetNumeric = "0123456789"
 
 var seededRand = rand.New(rand.NewSource(time.Now().UnixNano()))
+var randMux sync.Mutex
 
+
+func getRand(f func(rn *rand.Rand)) {
+	randMux.Lock()
+	defer randMux.Unlock()
+	f(seededRand)
+}
 
 
 func (*VS) RemoveAllUnusedStr(value string, args ...string) string {
@@ -118,9 +126,12 @@ func (*VS) RandomAlphabetNumeric(length int) string {
 
 func randomCharset(length int, charset string) string {
 	b := make([]byte, length)
-	for i := range b {
-		b[i] = charset[seededRand.Intn(len(charset))]
-	}
+	l := len(charset)
+	getRand(func(rn *rand.Rand) {
+		for i:= range b {
+			b[i] = charset[rn.Intn(l)]
+		}
+	})
 	return string(b)
 }
 

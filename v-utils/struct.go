@@ -11,7 +11,17 @@ import (
    ============================================ */
 var Utils *VS
 
-type VS struct { }
+type filesStruct struct { }
+
+type FileScanResult struct {
+	FileName string
+	DirPath  string
+	FilePath string
+}
+
+type VS struct {
+	Files *filesStruct
+}
 
 
 type evoHttpClient struct {
@@ -20,5 +30,7 @@ type evoHttpClient struct {
 
 
 func init() {
-	Utils = &VS{}
+	Utils = &VS{
+		Files: &filesStruct{},
+	}
 }
