@@ -3,6 +3,7 @@ package v_utils
 import (
 	"github.com/pkg/errors"
 	"io/ioutil"
+	"os"
 	"strings"
 )
 
@@ -21,7 +22,7 @@ func (*filesStruct) GetFileExtension(filename string) string {
 
 
 func (*filesStruct) GetFileName(filePath string, includeExt bool) string {
-	arr := strings.Split(filePath, "/")
+	arr := strings.Split(filePath, string(os.PathSeparator))
 	if includeExt {
 		return arr[len(arr)-1]
 	}
@@ -36,7 +37,7 @@ func (slf *filesStruct) GetFilesRecursively(dirPath string, extensions []string,
 	}
 
 	if len(dirPath) > 0 {
-		if dirPath[len(dirPath)-1:] == "/" {
+		if dirPath[len(dirPath)-1:] == string(os.PathSeparator) {
 			dirPath = dirPath[:len(dirPath)-1]
 		}
 	}
@@ -56,14 +57,14 @@ func (slf *filesStruct) GetFilesRecursively(dirPath string, extensions []string,
 			}
 
 			if file.IsDir() {
-				path := dirPath + "/" + file.Name()
+				path := dirPath + string(os.PathSeparator) + file.Name()
 				dirs = append(dirs, path)
 			}
 
 			if !file.IsDir() && file.Size() > 0 {
 				add := len(extensions) == 0
 				fileName := file.Name()
-				fullPath := dirPath + "/" + fileName
+				fullPath := dirPath + string(os.PathSeparator) + fileName
 
 				for _, ext := range extensions {
 					if ext == slf.GetFileExtension(fileName) {
@@ -124,7 +125,7 @@ func (slf *filesStruct) GetFilesRecursively(dirPath string, extensions []string,
 	//	if !file.IsDir() && file.Size() > 0 {
 	//		add := extension == ""
 	//		fileName := file.Name()
-	//		fullPath := dirPath + "/" + fileName
+	//		fullPath := dirPath + string(os.PathSeparator) + fileName
 	//
 	//		if extension != "" {
 	//			if extension == slf.GetFileExtension(fileName) {
