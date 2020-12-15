@@ -30,7 +30,7 @@ func (*filesStruct) GetFileName(filePath string, includeExt bool) string {
 }
 
 
-func (slf *filesStruct) GetFilesRecursively(dirPath string, extensions []string, limit int, condition func(fileName, fullPath string) bool) (files []FileScanResult, err error) {
+func (slf *filesStruct) GetFilesRecursively(dirPath string, extensions []string, limit int, condition func(fileName, filePath string) bool) (files []FileScanResult, err error) {
 	files = make([]FileScanResult, 0)
 	for i:=0; i<len(extensions); i++ {
 		extensions[i] = strings.ToLower(extensions[i])
@@ -64,7 +64,7 @@ func (slf *filesStruct) GetFilesRecursively(dirPath string, extensions []string,
 			if !file.IsDir() && file.Size() > 0 {
 				add := len(extensions) == 0
 				fileName := file.Name()
-				fullPath := dirPath + string(os.PathSeparator) + fileName
+				filePath := dirPath + string(os.PathSeparator) + fileName
 
 				for _, ext := range extensions {
 					if ext == slf.GetFileExtension(fileName) {
@@ -74,13 +74,13 @@ func (slf *filesStruct) GetFilesRecursively(dirPath string, extensions []string,
 				}
 
 				if add && condition != nil {
-					add = condition(fileName, fullPath)
+					add = condition(fileName, filePath)
 				}
 				if add {
 					files = append(files, FileScanResult{
 						FileName: fileName,
 						DirPath:  dirPath,
-						FilePath: fullPath,
+						FilePath: filePath,
 					})
 				}
 			}
@@ -102,7 +102,7 @@ func (slf *filesStruct) GetFilesRecursively(dirPath string, extensions []string,
 
 		return
 	}
-	
+
 	err = readDir(dirPath)
 	return
 }
