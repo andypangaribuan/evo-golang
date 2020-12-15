@@ -52,7 +52,7 @@ func (slf *filesStruct) GetFilesRecursively(dirPath string, extensions []string,
 
 		dirs := make([]string, 0)
 		for _, file := range fi {
-			if len(files) >= limit {
+			if len(files) >= limit && limit != -1 {
 				break
 			}
 
@@ -86,7 +86,7 @@ func (slf *filesStruct) GetFilesRecursively(dirPath string, extensions []string,
 			}
 		}
 
-		if len(files) < limit {
+		if len(files) < limit || limit == -1 {
 			for _, dir := range dirs {
 				_err := readDir(dir)
 				if _err != nil {
@@ -94,7 +94,7 @@ func (slf *filesStruct) GetFilesRecursively(dirPath string, extensions []string,
 					break
 				}
 
-				if len(files) >= limit {
+				if len(files) >= limit && limit != -1 {
 					break
 				}
 			}
@@ -102,49 +102,7 @@ func (slf *filesStruct) GetFilesRecursively(dirPath string, extensions []string,
 
 		return
 	}
-
-
+	
 	err = readDir(dirPath)
-
-
-
-
-
-
-	//fi, _err := ioutil.ReadDir(dirPath)
-	//if _err != nil {
-	//	err = errors.WithStack(_err)
-	//	return
-	//}
-	//
-	//for _, file := range fi {
-	//	if len(files) >= limit {
-	//		break
-	//	}
-	//
-	//	if !file.IsDir() && file.Size() > 0 {
-	//		add := extension == ""
-	//		fileName := file.Name()
-	//		fullPath := dirPath + string(os.PathSeparator) + fileName
-	//
-	//		if extension != "" {
-	//			if extension == slf.GetFileExtension(fileName) {
-	//				add = true
-	//			}
-	//		}
-	//
-	//		if add && condition != nil {
-	//			add = condition(fileName, fullPath)
-	//		}
-	//		if add {
-	//			files = append(files, fullPath)
-	//		}
-	//	}
-	//
-	//	if file.IsDir() {
-	//
-	//	}
-	//}
-
 	return
 }
